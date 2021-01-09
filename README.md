@@ -31,17 +31,6 @@
     - stylesheet.scss
     - stylesheet.css
 
- install app localy:
-  - Nedded python and pip installed
-  - run pip install -r requirements.txt
-
- run app localy:
-  1. set FLASK_APP=application.py
-  2. set FLASK_ENV=development (if desired)
-  3. set DATABASE_URL=*databasse_url*
-  4. flask run
-
-
   **Install without virtual environment:**
 
     needed:
