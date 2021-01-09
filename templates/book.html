@@ -1,0 +1,95 @@
+<!--book page-->
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ book.title }}
+{% endblock %}
+
+{% block body %}
+    <h1>Book reviews for {{ book.title }}</h1>
+
+    <h4>About the book</h4>
+
+    <ul>
+      {% for bookInfo in book %}
+        <li>{{ bookInfo[0] + bookInfo[1] }}</li>
+      {% endfor %}
+    </ul>
+
+    {% if goodreadsReviewData[0] != 'no statistics' %}
+    <h4>Goodreads statistics</h4>
+    <ul>
+      {% for data in goodreadsReviewData %}
+        <li>{{ data[0] + data[1] }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h4>Rate the book</h4>
+    <form action="{{ url_for('book', bookId=bookId) }}" method="post">
+
+      <div class="form-group">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value=1>
+        <label class="form-check-label" for="inlineRadio1">bad</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value=2>
+        <label class="form-check-label" for="inlineRadio2">ok</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value=3>
+        <label class="form-check-label" for="inlineRadio3">good</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value=4>
+        <label class="form-check-label" for="inlineRadio3">very good</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value=5>
+        <label class="form-check-label" for="inlineRadio3">excellent</label>
+      </div>
+      </div>
+
+      <div class="form-group">
+        <input class="form-control" type="text" name="bookReview" placeholder="Write a review">
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary">Post review</button>
+      </div>
+
+    </form>
+
+    {% if bookAlreadyReviewed %}
+    <div class="alert alert-danger" role="alert">
+      Only one review per book allowed. You have already reviewed this book.
+    </div>
+    {% endif %}
+
+    <h4>What other users wrote</h4>
+    {% for review in reviews %}
+      <div class="card">
+        <div class="card-header">{{ review [0] }}</div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{ review[1] }}</p>
+            <footer class="blockquote-footer">
+              {% if review[2] == 1 %}
+                Bad
+              {% elif review[2] == 2 %}
+                Ok
+              {% elif review[2] == 3 %}
+                Good
+              {% elif review[2] == 4 %}
+                Very good
+              {% elif review[2] == 5 %}
+                Excellent
+              {% endif %}
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+      <br>
+    {% endfor %}
+{% endblock %}

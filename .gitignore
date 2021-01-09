@@ -1,0 +1,5 @@
+flask_session/*
+__pycache__/*
+static/stylesheet.css.map
+Pipfile
+Pipfile.lock

@@ -1,0 +1,16 @@
+<!--succesfully signed up page -->
+{% extends "layout.html" %}
+
+{% block title %}
+    Success
+{% endblock %}
+
+{% block body %}
+    <p>Congrats {{ userName }}! You can now login to bookreview</p>
+
+    <form action="{{ url_for('index') }}" method="post">
+
+      <div class="form-group">
+          <button class="btn btn-primary">Login</button>
+      </div>
+{% endblock %}

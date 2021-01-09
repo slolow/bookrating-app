@@ -1,0 +1,42 @@
+<!--sign in page-->
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+    <h1>Login</h1>
+
+    <form action="{{ url_for('index') }}" method="post">
+
+      <div class="form-group">
+        <input class="form-control" name="userName" placeholder="User Name" type="text">
+      </div>
+
+      <div class="form-group">
+        <input class="form-control" name="password" placeholder="Password" type="password">
+      </div>
+
+      <div class="form-group">
+          <button class="btn btn-primary">Login</button>
+      </div>
+
+    </form>
+
+    {% if falseLoginData %}
+    <div class="alert alert-danger" role="alert">
+      Wrong username or password
+    </div>
+    {% endif %}
+
+    <p>New to Book review?</p>
+
+    <form action="{{ url_for('signUp') }}" method="post">
+
+      <div class="form-group">
+          <button class="btn btn-primary">Sign up</button>
+      </div>
+
+    </form>
+{% endblock %}

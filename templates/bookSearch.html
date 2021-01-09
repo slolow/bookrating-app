@@ -1,0 +1,29 @@
+<!--book homepage -->
+{% extends "layout.html" %}
+
+{% block title %}
+    homepage
+{% endblock %}
+
+{% block body %}
+  <h1>Search for books</h1>
+
+  <form action="{{ url_for('searchResults') }}" method="post">
+
+    <div class="form-group">
+      <input class="form-control" name="bookInfo" placeholder="Type in ISBN, title or author of the book" type="text">
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary">Search</button>
+    </div>
+
+  </form>
+
+  {% if bookNotAvailable %}
+    <div class="alert alert-warning" role="alert">
+      Unfortunately this book is not available
+    </div>
+  {% endif %}
+
+{% endblock %}
