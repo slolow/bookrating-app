@@ -51,6 +51,7 @@ https://youtu.be/6rESpya70nc
        6. set FLASK_ENV=development (if desired)
        7. set DATABASE_URL=*databasse_url*
        8. flask run
+       9. if an error occurs try: pip install -r working_dependency_versions.txt
 
   **Or install in pipenv:**
 
@@ -69,3 +70,4 @@ https://youtu.be/6rESpya70nc
        6. set FLASK_ENV=development (if desired)
        7. set DATABASE_URL=*databasse_url*
        8. pipenv run flask run
+       9. if an error occurs try: pipenv install -r working_dependency_versions.txt
